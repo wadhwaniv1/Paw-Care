@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="../css/sign-up.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="twohalves">
+        <div class="wc">
+            <div class="welcome">
+                <div class="weltxt">Welcome to the family.</div>
+                <div class="weltxt1">
+                    <img src="../images/petfly.png" alt="">
+                </div>
+            </div>
+            <div class="pic">
+                <img src="../images/petfly1.png" alt="">
+            </div>
+        </div>
+        <div class="wc-1">
+            <div class="nav">
+                <div class="topnav">
+                    <a href="#">Join</a>
+                    <a href="/">Discover</a>
+                </div>
+            </div>
+            <!--<div class="form">
+                <div class="formhead">
+                    <div>SignUp</div>
+                    <div>
+                        <img src="../images/LOGIN.png" alt="">
+                    </div>
+                </div>
+                <form>
+                    <input type="text" name="sname" id="sname" placeholder="Email">
+                    <input type="text" name="sname" id="sname" placeholder="USERNAME">
+                    <input type="text" name="sname" id="sname" placeholder="PASSWORD">
+                    <div class="forgot">
+                        <div>Already have account?</div>
+                        <div onclick="location.href='login.html';" style="cursor: pointer;">Login</div>
+                    </div>
+                    <div class="ssubmit">
+                        <div class="submit" style="background: #FFB4B4;"><input type="button" value="SignUp"></div>
+                    </div>
+                </form>
+            </div>-->
+            <div class="signup">
+                <form action="/signup" method="POST">
+                    <div class="formhead">
+                        <div>SignUp</div>
+                        <div>
+                            <img src="../images/LOGIN.png" alt="">
+                        </div>
+                    </div>
+                    <div class="formbase">
+                        <label for="email"></label>
+                        <input type="text" placeholder="Enter Email" name="email" required>
+
+                        <label for="psw"></label>
+                        <input type="text" placeholder="Enter Username" name="username" required>
+
+                        <label for="psw"></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    </div>
+                    <div class="forgot">
+                        <div>Already have account?</div>
+                        <div onclick="location.href='/login';" style="cursor: pointer;">Login</div>
+                    </div>
+                    <div class="submit" style="background: #FFB4B4;"><button type="submit" class="signupbtn">SignUp</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

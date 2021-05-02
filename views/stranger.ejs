@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawRanger</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="#">Discover</a>
+        <a href="/login">Join</a>
+    </div>
+    <div class="flex-container">
+        <div class="text2">
+            <img src="../images/Stranger.PNG" alt="">
+        </div>
+        <form action="/stranger" method="POST">
+            <div class="form">
+                <div>
+                    <h2 style="float: left;background: #FFB4B4;font-family: 'Righteous', cursive;font-size: 2rem;">
+                        PawRanger</h2><img src="../images/Paw.png" alt=""
+                        style="width: 15%;height: 100%;background: #FFB4B4;">
+                </div>
+                <div>
+                    <div class="fields"><input type="text" name="name" placeholder="Enter name" required></div>
+                </div>
+                <div>
+                    <div class="fields"><input type="email" name="email" placeholder="Enter email" required></div>
+                </div>
+                <input type="hidden" name="latitude" id="mylat" value="x" required>
+                <input type="hidden" name="longitude" id="mylong" value="y" required>
+                <div>
+                    <div class="upload"><input style="background: #a5a5a5;" type="file" id="myfile" name="myfile"></div>
+                </div>
+                <div class="ssubmit">
+                    <div class="submit" style="background: #FFB4B4;"><button type="submit" class="signupbtn">Submit
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else { alert("Geolocation is not supported by this browser."); }
+        }
+        function showPosition(position){
+            var coords1 = position.coords.latitude;
+            var coords2 = position.coords.longitude;
+            document.getElementById("mylat").value = coords1;
+            document.getElementById("mylong").value = coords2;
+            //document.getElementById("demo").innerHTML = coords1;
+            //console.log(x);
+        }
+        getLocation();
+    </script>
+</body>
+
+</html>

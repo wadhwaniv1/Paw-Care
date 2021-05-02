@@ -1,0 +1,168 @@
+*{
+    box-sizing: border-box;
+    background: #FFC9D6;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+.twohalves{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wc{
+    display: flex;
+    flex-direction: column;
+
+}
+.welcome{
+    background: #FFB4B4;
+    width: 70%;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 40px 0px;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+}
+.weltxt{
+    background: #FFB4B4;
+    margin: 10px;
+    width: 90%;
+    height: 50%;
+    font-family: 'Righteous', cursive;
+    font-size: 3.5rem;
+    color: #7D27B3;
+}
+.weltxt1{
+    background: #FFB4B4;
+    margin: 10px;
+    width: 90%;
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.weltxt1 > img{
+    width: 40%;
+    height: 90%;
+    background: #FFB4B4;
+}
+.pic > img{
+    width: 70%;
+    background: #FFC9D6;
+}
+.nav{
+    height: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.topnav{
+    overflow: hidden;
+    display: flex;
+    width: 50%;
+    height: 50%;
+}
+.topnav a {
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+.topnav a:hover {
+    background-color: rgb(252, 138, 138);
+    color: black;
+}
+
+.formhead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Cuprum;
+    height: 20%;
+}
+.formhead > div{
+    font-family: 'Righteous', cursive;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFB4B4;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.formhead > div >img{
+    height: 100%;
+    width: 40%;
+    background: #FFB4B4;
+}
+.forgot{
+    display: flex;
+    font-family: 'Righteous', cursive;
+    background: #FFB4B4;
+    height: 12%;
+    margin-top: 12px;
+}
+.forgot > div{
+    background: #FFB4B4;
+    text-align: center;
+}
+.submit{
+    background: #FFB4B4;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.submit > button{
+    background-color: #B9EBC7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: 10px;
+    height: 100%;
+    border: 0;
+    width: 35%;
+    cursor: pointer;
+}
+button:focus{
+    outline: none;
+}
+.wc-1{
+    display: flex;
+    flex-direction: column;
+}
+.signup{
+    background: #FFB4B4;
+    width: 70%;
+    height: 70%;
+    padding: 10px;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.formbase{
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: auto;
+    background: #FFB4B4;
+}
+input[type=text], input[type=password]{
+    border: none;
+    background: #FFE9E9;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.14);
+    border-radius: 4px;
+    padding: 7px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    font-family: 'Righteous', cursive;
+    font-size: 1rem;
+}
+form{
+    background: #FFB4B4;
+}
+label{
+    background: #FFB4B4;
+}

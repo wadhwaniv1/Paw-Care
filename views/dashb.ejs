@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/dashb.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>PawCare</title>
+</head>
+
+<body>
+    <main>
+        <div class="div1">
+            <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
+            <div class="toggle-section">
+                <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
+                <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
+                <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+            </div>
+            <div class="toggle-section">
+                <div>Hello <%= uname %>,<i class="fa fa-user"></i></div>
+                <div>l</div>
+                <div onclick="" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+            </div>
+        </div>
+        <div class="div2">
+            <video src="../images/vid.mp4" style="width: 100%;" autoplay loop>
+                <source src="movie.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+            </video>
+
+        </div>
+        <div class="div3">
+            <div class="div31">Exclusive Pet Care.</div>
+            <div class="div32"><img src="../images/pv.png" alt=""></div>
+            <div class="div33"><button onclick="location.href='../html/petcare.html';" class="button button2">Click
+                    here</button></div>
+        </div>
+        <div id="main-1">
+        <% docs.forEach(function(thing){ %>
+            <div class="div4">
+                <div class="div41"><img src="../images/torainu.png" alt=""></div>
+                <div class="div42"><%= thing.name %></div>
+                <div class="div43">
+                    <div class="cart"><i class="fa fa-shopping-cart"
+                            style="font-size:35px;color:red;background: #FFFDFD;"></i></div>
+                </div>
+                <div class="div44"><%= thing.desc %></div>
+                <div class="div45">₹<%= thing.price %></div>
+            </div>
+            <% }) %>    
+    </main>
+</body>
+
+</html>

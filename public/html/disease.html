@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/disease.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Disease</title>
+</head>
+
+<body>
+    <div class="div1">
+        <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
+        <div class="toggle-section">
+            <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
+            <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
+            <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+        </div>
+        <div class="toggle-section">
+            <div>Hello User,<i class="fa fa-user"></i></div>
+            <div>l</div>
+            <div onclick="" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+        </div>
+    </div>
+    <div style="display: flex;justify-content: center;margin: 40px;">
+        <div class="div2">
+            <div class="pd"><img src="../images/pd.png" alt=""></div>
+            <div>
+                <pre>Disease 
+Identification.
+<span style="font-size: 3vh;font-family: Verdana, Geneva, Tahoma, sans-serif;background: #FDC1FE;">Check your pet health.</span></pre>
+            </div>
+            <div style="display: flex;justify-content: center;align-items: center;"><button class="button button2">Click
+                    here</button></div>
+        </div>
+    </div>
+
+    <div class="div3">
+        <div class="div4"
+            style="writing-mode: vertical-rl;font-family: Righteous;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+            PET CARE.
+        </div>
+        <div id="wrapper">
+            <h1 style="background: rgb(252, 212, 248);">What kind of computer scientist are you?</h1>
+            <p style="background: rgb(252, 212, 248);">Take this questionnaire to find out!</p>
+
+            <form id="quiz" style="background: rgb(252, 212, 248);">
+                <!-- Question 1 -->
+                <h2>What gets you the most excited?</h2>
+                <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+                <!-- The value is which answer the choice corresponds to. -->
+                <label><input type="radio" name="q1" value="c1">
+                    Experimenting, discovering, and learning
+                </label><br />
+                <label><input type="radio" name="q1" value="c2">
+                    Helping others
+                </label><br />
+                <label><input type="radio" name="q1" value="c3">
+                    Music, movies, games, and making others laugh
+                </label><br />
+                <label><input type="radio" name="q1" value="c4">
+                    Taking risks
+                </label><br />
+
+                <!-- Question 2 -->
+                <h2>What is your ideal work environment?</h2>
+                <!-- Here are the choices for the second question. Notice how each input tag has the same name (q2), but a different name than the previous question. -->
+                <label><input type="radio" name="q2" value="c1">
+                    Inside a high tech lab with lots of fancy equipment
+                </label><br />
+                <label><input type="radio" name="q2" value="c2">
+                    Somewhere I feel appreciated for my work
+                </label><br />
+                <label><input type="radio" name="q2" value="c3">
+                    Surrounded by cool gadgets and toys
+                </label><br />
+                <label><input type="radio" name="q2" value="c4">
+                    Inside a cozy room or garage at home
+                </label><br />
+
+                <!-- Question 3 -->
+                <h2>Who are your role models?</h2>
+                <!-- Choices for the third question -->
+                <label><input type="radio" name="q3" value="c1">
+                    People who make great discoveries
+                </label><br />
+                <label><input type="radio" name="q3" value="c2">
+                    People who make sacrifices to help others
+                </label><br />
+                <label><input type="radio" name="q3" value="c3">
+                    Creative, artistic, and expressive people
+                </label><br />
+                <label><input type="radio" name="q3" value="c4">
+                    People who build innovative products
+                </label><br />
+
+                <!-- Question 4 -->
+                <h2>What do you do when you encounter a difficult problem?</h2>
+                <!-- Choices for the fourth question -->
+                <label><input type="radio" name="q4" value="c1">
+                    Try to find the solution yourself (online, in a book, etc.)
+                </label><br />
+                <label><input type="radio" name="q4" value="c2">
+                    Ask someone for help
+                </label><br />
+                <label><input type="radio" name="q4" value="c3">
+                    Take a break, because it helps you be more creative
+                </label><br />
+                <label><input type="radio" name="q4" value="c4">
+                    Jump in and try different solutions until one works
+                </label><br />
+
+                <button type="submit" id="submit" onclick="tabulateAnswers()">Submit Your Answers</button>
+                <button type="reset" id="reset" onclick="resetAnswer()">Reset</button>
+            </form>
+
+
+            <div id="answer">Your result will show up here!</div>
+        </div>
+    </div>
+
+
+    <script>
+        // function to calculate the result of the survey
+        function tabulateAnswers() {
+            // initialize variables for each choice's score
+            // If you add more choices and outcomes, you must add another variable here.
+            var c1score = 0;
+            var c2score = 0;
+            var c3score = 0;
+            var c4score = 0;
+
+            // get a list of the radio inputs on the page
+            var choices = document.getElementsByTagName('input');
+            // loop through all the radio inputs
+            for (i = 0; i < choices.length; i++) {
+                // if the radio is checked..
+                if (choices[i].checked) {
+                    // add 1 to that choice's score
+                    if (choices[i].value == 'c1') {
+                        c1score = c1score + 1;
+                    }
+                    if (choices[i].value == 'c2') {
+                        c2score = c2score + 1;
+                    }
+                    if (choices[i].value == 'c3') {
+                        c3score = c3score + 1;
+                    }
+                    if (choices[i].value == 'c4') {
+                        c4score = c4score + 1;
+                    }
+                    // If you add more choices and outcomes, you must add another if statement below.
+                }
+            }
+
+            // Find out which choice got the highest score.
+            // If you add more choices and outcomes, you must add the variable here.
+            var maxscore = Math.max(c1score, c2score, c3score, c4score);
+
+            // Display answer corresponding to that choice
+            var answerbox = document.getElementById('answer');
+            if (c1score == maxscore) { // If user chooses the first choice the most, this outcome will be displayed.
+                answerbox.innerHTML = "You are a computer researcher! You will enjoy developing algorithms, and doing things with computers no one else has done before. For example, researchers sent a robot to the moon, built a computer to beat the best humans in Jeopardy, and are creating robots to do your chores for you. Computer researchers typically go to college and work at universities, or as a part of the research and development team in companies.";
+            }
+            if (c2score == maxscore) { // If user chooses the second choice the most, this outcome will be displayed.
+                answerbox.innerHTML = "You are an altruistic coder! You love to help people and feel the positive impact of your work every day. Altrustic coders are out there every day making the world a better place. Computer scientists write software to more effectively help doctors diagnose illnesses such as cancer, connect people in third world countries to education and medical resources on the internet, code websites and software for nonprofit organizations, and much more!";
+            }
+            if (c3score == maxscore) { // If user chooses the third choice the most, this outcome will be displayed.
+                answerbox.innerHTML = "You are a developer! Developers create games, apps, social media, movies, and all sorts of fun programs that people enjoy. These coders work on projects such as Minecraft, Poptropica, and Youtube. Developers need sharp coding skills, are great debuggers, and need to work well in a team of other developers.";
+            }
+            if (c4score == maxscore) { // If user chooses the fourth choice the most, this outcome will be displayed.
+                answerbox.innerHTML = "You are the future CEO of a new startup! You enjoy taking risks and building the next big thing that no one has even thought of before. For example, billionare Mark Zuckerberg founded Facebook in 2004, a project he started inside his dorm room in college which eventually turned into a social networking revolution that changed the world.";
+            }
+            // If you add more choices, you must add another response below.
+        }
+
+        // program the reset button
+        function resetAnswer() {
+            var answerbox = document.getElementById('answer');
+            answerbox.innerHTML = "Your result will show up here!";
+        }
+    </script>
+</body>
+
+</html>

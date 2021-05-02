@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="twohalves">
+        <div class="wc">
+            <div class="welcome">
+                <div class="weltxt">Welcome to the family.</div>
+                <div class="weltxt1">
+                    <img src="../images/petfly.png" alt="">
+                </div>
+            </div>
+            <div class="pic">
+                <img src="../images/petfly1.png" alt="">
+            </div>
+        </div>
+        <div class="wc">
+            <div class="nav">
+                <div class="topnav">
+                    <a href="#">Join</a>
+                    <a href="/">Discover</a>
+                </div>
+            </div>
+            <!--<div class="form">
+                <div class="formhead">
+                    <div>LOGIN</div>
+                    <div>
+                        <img src="../images/LOGIN.png" alt="">
+                    </div>
+                </div>
+                <div class="fields"><input type="text" name="sname" id="sname" placeholder="USERNAME"></div>
+                <div class="fields"><input type="text" name="sname" id="sname" placeholder="PASSWORD"></div>
+                <div class="forgot">
+                    <div>Forgot Password?</div>
+                    <div onclick="location.href='signup.html';" style="cursor: pointer;">SignUp</div>
+                </div>
+                <div class="ssubmit">
+                    <div class="submit" onclick="location.href='../dashb';" style="background: #FFB4B4;"><input type="button" value="Login" style="cursor: pointer;"></div>
+                </div>
+            </div>-->
+            <div class="signup">
+                <form action="/login" method="POST">
+                    <div class="formhead">
+                        <div>Login</div>
+                        <div>
+                            <img src="../images/LOGIN.png" alt="">
+                        </div>
+                    </div>
+                    <div class="formbase">
+
+                        <label for="email"></label>
+                        <input type="email" placeholder="Enter email" name="email" required>
+
+                        <label for="psw"></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    </div>
+                    <div class="forgot">
+                        <div>Forgot password?</div>
+                        <div onclick="location.href='../signup';" style="cursor: pointer;">Sign-up</div>
+                    </div>
+                    <div class="submit" style="background: #FFB4B4;"><button type="submit" class="signupbtn">Login
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
