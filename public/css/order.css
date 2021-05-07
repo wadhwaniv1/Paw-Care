@@ -59,7 +59,10 @@ header > div > div{
     align-items: center;
     justify-content: center;
 }
-.content > div > i{
+button > i{
     background: #EC91DD;
     color: black;
+}
+form{
+    background: #EC91DD;
 }

@@ -1,0 +1,124 @@
+body{
+    background: #FFE1E8;
+    font-family: Righteous;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.div1{
+    width: 95%;
+    margin: 15px auto;
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 0.5fr repeat(2,1fr);
+}
+.head{
+    font-family: Righteous;
+    font-size: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-section{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: Righteous;
+    font-size: 4vh;
+}
+.toggle-section > div{
+    margin: 10px;
+}
+.toggle-section > div:hover{
+    color: rgb(97, 96, 96);
+}
+i{
+    margin: 1px;
+}
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+  }
+  
+  .col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+  }
+  
+  .col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+  }
+  
+  .col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  }
+  
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+  
+  .container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+  
+  input[type=text] {
+    width: 98%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+  
+  .btn {
+    background-color: #B223AD;
+    
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  span.price {
+    float: right;
+    color: grey;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  }

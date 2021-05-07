@@ -16,14 +16,14 @@
         <div class="div1">
             <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
             <div class="toggle-section">
-                <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
+                <div onclick="location.href='/dashb';" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
                 <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
-                <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+                <div onclick="location.href='/cart';" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
             </div>
             <div class="toggle-section">
-                <div>Hello User,<i class="fa fa-user"></i></div>
+                <div>Hello <%= user %>,<i class="fa fa-user"></i></div>
                 <div>l</div>
-                <div onclick="" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+                <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
             </div>
         </div>
         <div class="div2">
@@ -33,7 +33,7 @@
 Identification.
 <span style="font-size: 3vh;font-family: Verdana, Geneva, Tahoma, sans-serif;background: #FDC1FE;">Check your pet health.</span></pre>
             </div>
-            <div style="display: flex;justify-content: center;align-items: center;"><button onclick="location.href='disease.html';" style="cursor: pointer;"class="button button2">Click here</button></div>
+            <div style="display: flex;justify-content: center;align-items: center;"><button onclick="location.href='/disease';" style="cursor: pointer;"class="button button2">Click here</button></div>
         </div>
         <div class="div3" style="writing-mode: vertical-rl;font-family: Righteous;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
             PET CARE.
@@ -45,7 +45,7 @@ Identification.
 nearby vets.
 <span style="font-size: 3vh;font-family: Verdana, Geneva, Tahoma, sans-serif;background: #FDC1FE;">Monthly health checkup.</span></pre>
             </div>
-            <div style="display: flex;justify-content: center;align-items: center;"><button onclick="location.href='vet.html';" class="button button2">Click here</button></div>
+            <div style="display: flex;justify-content: center;align-items: center;"><button onclick="location.href='/vet';" class="button button2">Click here</button></div>
         </div>
     </main>
 </body>

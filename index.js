@@ -1,11 +1,15 @@
 require('dotenv').config();
 const express = require('express');
-//const bodyParser = require('body-parser')
 require("./db/conn")
 const Product = require("./models/products");
+const Order = require("./models/order");
 const CustomerData = require("./models/signup");
 const StrangerData = require("./models/stranger");
 const productRouter = require('./routers/route');
+const checkout = require('./models/checkout');
+const cookieParser = require("cookie-parser");
+const auth = require("./middleware/auth")
+const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const path = require("path");
 const port = process.env.PORT || 8080;
@@ -21,36 +25,17 @@ app.use(express.static(staticPath));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(productRouter);
+app.use(cookieParser());
 //app.use(morgan);
 
 //to set the view engine
 app.set("view engine", "ejs");
 
-var cors = require('cors')
+var cors = require('cors');
+const Checkout = require('./models/checkout');
 app.use(cors());
 
-
-//template engine root
-/*app.get("/dashb", (req, res) => {
-    var users = Product.find({}, (err, docs) => {
-
-        if (err) throw err;
-        else {
-            res.render("dashb", {
-                docs
-            });
-        }
-
-    });
-    console.log(users);*/
-    
-    //res.send(docs);
-    //console.log(docs);
-    /*res.render("dashb",{
-        docs
-    })
-})*/
-
+app.use("/generatepdf", require("./routers/generatePdf"));
 app.get("/", (req, res) => {
     res.render("index");
 })
@@ -67,6 +52,48 @@ app.get("/stranger", (req, res) => {
     res.render("stranger");
 })
 
+app.get("/admin_order", async (req, res) => {
+    try {
+        const orderedData = await Checkout.find({});
+        res.render("admin_order", {
+            docs: orderedData
+        });
+    } catch (error) {
+        res.status(400).render("404");
+    }
+
+})
+
+app.post("/checkout/:price", auth, async (req, res) => {
+    const price = req.params.price;
+    res.render("checkout", {
+        price: price,
+        user: req.user.username,
+        email: req.user.email
+    })
+})
+
+app.post("/checkout", auth, async (req, res) => {
+    try {
+
+        const orderData = await Order.find({ id: req.user._id });
+        const checkout = new Checkout({
+            id: req.user._id,
+            fullname: req.body.fullname,
+            email: req.body.email,
+            contact: req.body.contact,
+            address: req.body.address,
+            price: req.body.price,
+            Order: orderData
+        })
+        //console.log(orderData);
+        const ordered = await checkout.save();
+        //console.log(ordered);
+        res.status(201).redirect("cart");
+    } catch (error) {
+        res.status(400).render("404");
+    }
+})
 app.get("/straypet", (req, res) => {
     const docs = StrangerData.find({});
     docs.exec((err, data) => {
@@ -88,7 +115,8 @@ app.post("/signup", async (req, res) => {
 
         //const token = await register.generateAuthToken();
         const registered = await register.save();
-        res.status(201).render("login");
+        res.redirect("login");
+        res.status(201);
     } catch (err) {
         //alert("Enter correct credentials.");
         res.status(400).send(err);
@@ -105,30 +133,162 @@ app.post("/stranger", async (req, res) => {
         })
 
         const registered = await stranger.save();
-        res.status(201).render("stranger");
+
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.USER,
+                pass: process.env.PASS
+            }
+        })
+
+        let mailOptions = {
+            from: process.env.USER,
+            to: req.body.email,
+            subject: 'Congratulations 🎉 PawRanger!!!',
+            text: `Congrats ${req.body.name}, you have helped a needy animal. You have earned the badge of Paw ranger🐶. Thank you for support.`
+        }
+
+        transporter.sendMail(mailOptions, (err, data) =>{
+            if(err)
+            console.log(err);
+            else
+            console.log("Email sent!!");
+        })
+
+        res.status(201).redirect("stranger");
     } catch (err) {
         //alert("Enter correct credentials.");
         res.status(400).send(err);
     }
 })
 
+app.post("/order", auth, async (req, res) => {
+    try {
+        //console.log(req.user._id);
+        const orderData = await Order.find({ id: req.user._id });
+        temp = false;
+        for (i = 0; i < orderData.length; i++) {
+            if (orderData[i].name === req.body.name) {
+                t = i;
+                temp = true;
+                break;
+            }
+        }
+        if (temp) {
+            p = orderData[t].qty + 1;
+            //console.log(req.body.name === orderData[t].name);
+            try {
+                let doc = await Order.findOneAndUpdate({ name: req.body.name }, { qty: p }, {
+                    new: true
+                });
+                //console.log(doc);
+            } catch (error) {
+                res.status(400).send("Not found");
+            }
+        } else {
+            const order = new Order({
+                id: req.user._id,
+                name: req.body.name,
+                desc: req.body.desc,
+                price: req.body.price,
+                qty: 1
+            })
+            const ordered = await order.save();
+        }
+        res.status(201).redirect("dashb");
+        //res.send("<script>alert('Order added to cart'); window.location.href = '/dashb'; </script>");
+    } catch (error) {
+        res.status(400).render("404");
+    }
+})
+
+app.get("/petcare", auth, (req, res) => {
+    //console.log(auth);
+    res.render("petcare", {
+        user: req.user.username
+    });
+})
+
+app.get("/disease", auth, (req, res) => {
+    //console.log(auth);
+    res.render("disease", {
+        user: req.user.username
+    });
+})
+app.get("/vet", auth, (req, res) => {
+    //console.log(auth);
+    res.render("vet", {
+        user: req.user.username
+    });
+})
+
+
+app.get("/cart", auth, async (req, res) => {
+    //console.log(auth);
+    try {
+        const orderData = await Order.find({ id: req.user._id });
+        //console.log(orderData);
+        res.render("cart", {
+            user: req.user.username,
+            docs: orderData
+        });
+    } catch (error) {
+        res.status(404).send(error);
+    }
+
+})
+
+app.post("/cart/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        //console.log(id);
+        const delorder = await Order.findByIdAndDelete(id);
+        if (!id) {
+            return res.status(400).send("Err");
+        }
+        res.redirect("../cart");
+    } catch (err) {
+        res.status(400).send(err);
+    }
+})
+
+app.get("/logout", auth, async (req, res) => {
+    try {
+        res.clearCookie("jwt");
+        console.log("Logout successfully");
+        res.redirect("/login");
+    } catch (error) {
+        res.status(404).send(error);
+    }
+})
+
+app.get("/dashb", auth, async (req, res) => {
+    const docs = Product.find({});
+    //console.log(docs);
+    docs.exec((err, data) => {
+        if (err) throw err;
+        res.render("dashb", {
+            docs: data,
+            uname: req.user.username
+        })
+    })
+})
 app.post("/login", async (req, res) => {
     try {
         const email = req.body.email;
         const psw = req.body.psw;
-        //const username = req.body.username;
         const useremail = await CustomerData.findOne({ email: email });
         const isMatch = await bcrypt.compare(psw, useremail.psw);
+        if (!isMatch) console.log("not matched");
         const token = await useremail.generateAuthToken();
+        res.cookie("jwt", token, {
+            expires: new Date(Date.now() + 5000000),
+            httpOnly: true
+        });
+        //console.log(isMatch);
         if (isMatch) {
-            const docs = Product.find({});
-            docs.exec((err, data) => {
-                if (err) throw err;
-                res.render("dashb", {
-                    docs: data,
-                    uname: useremail.username
-                })
-            })
+            res.redirect("/dashb");
         }
         else {
             res.send("Invalid credentialss");
@@ -138,10 +298,12 @@ app.post("/login", async (req, res) => {
     }
 })
 
+
+
 app.get("*", (req, res) => {
     res.render("404");
 })
 
 app.listen(port, () => {
-    console.log("Listening...")
+    console.log("Listening to port" + port)
 })

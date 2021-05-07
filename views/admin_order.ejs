@@ -13,8 +13,8 @@
     <main>
         <div class="div1"><img src="../images/admin.png" alt=""></div>
         <div class="div2"><i class="fa fa-bars"></i>Orders</div>
-        <div class="div3" onclick="location.href='straypet.html';" style="cursor:pointer;"><i class="fa fa-paw" aria-hidden="true"></i>StrayPets</div>
-        <div class="div4"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Products</div>
+        <div class="div3" onclick="location.href='/straypet';" style="cursor:pointer;"><i class="fa fa-paw" aria-hidden="true"></i>StrayPets</div>
+        <div class="div4" onclick="location.href='/products';" style="cursor:pointer;"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Products</div>
         <div class="div5"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</div>
     </main>
     <header>
@@ -24,16 +24,27 @@
             <div>Product</div>
             <div>Address</div>
             <div>Contact</div>
-            <div>Time</div>
+            <div>Price</div>
         </div>
+        <% docs.forEach(function(thing){ %>
         <div class="content">
-            <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
-            <div>Vishal</div>
+            <div>
+                <form action="/generatepdf" method="post">
+                    <input type="hidden" name="price" value=<%= thing.price %>>
+                    <input type="hidden" name="email" value=<%= thing.email %>>
+                    <input type="hidden" name="address" value="<%= thing.address %>">
+                    <input type="hidden" name="contact" value="<%= thing.contact %>">
+                    <input type="hidden" name="fullname" value="<%= thing.fullname %>">
+                    <button type="submit" style="all: unset; cursor: pointer;"><i class="fa fa-search" aria-hidden="true"></i>View</button>
+                </form>
+            </div>
+            <div><%= thing.fullname %></div>
             <div>Tora Inu</div>
-            <div>Jaipur</div>
-            <div>7777</div>
-            <div>20:33</div>
+            <div><%= thing.address %></div>
+            <div><%= thing.contact %></div>
+            <div>₹ <%= thing.price %></div>
         </div>
+        <% }) %>
         <div class="content">
             <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
             <div>Vishal</div>

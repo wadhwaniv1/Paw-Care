@@ -42,11 +42,7 @@ main{
     justify-content:space-between;
     align-items: center;
 }
-.main1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .div4{
     background: #FFBFBF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

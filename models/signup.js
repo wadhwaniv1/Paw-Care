@@ -16,22 +16,13 @@ const customerSchema = new mongoose.Schema({
     psw : {
         type: String,
         required: true
-    },
-    tokens : [{
-        token: {
-            type: String,
-            required: true
-        }
-    }]
+    }
 })
 
 //instance method
 customerSchema.methods.generateAuthToken = async function(){
     try{
         const token = jwt.sign({_id: this._id.toString()}, process.env.SECRET_KEY);
-        this.tokens = this.tokens.concat({token:token})
-        await this.save();
-        //console.log(token);
         return token;
     }catch(err){
         console.log(err);
@@ -41,6 +32,7 @@ customerSchema.methods.generateAuthToken = async function(){
 customerSchema.pre("save", async function(next){
     //password hash bcrypt 10 rounds
     //const passwordHash = await bcrypt.hash(this.psw, 10);
+    console.log(this.psw);
     this.psw = await bcrypt.hash(this.psw, 10);
     next();
 })

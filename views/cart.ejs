@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="'https://fonts.googleapis.com/css2?family=Comfortaa&display=swap'">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+
+<body>
+    <div class="div1">
+        <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
+        <div class="toggle-section">
+            <div onclick="location.href='/dashb';" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
+            <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
+            <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+        </div>
+        <div class="toggle-section">
+            <div>Hello <%= user %>,<i class="fa fa-user"></i></div>
+            <div>l</div>
+            <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <div class="cart">
+            <div class="products">
+                <% docs.forEach(function(thing){ %>
+
+                    <div class="product">
+                        <img src="../images/torainu.png">
+                        <div class="product-info">
+                            <h3 class="product-name">
+                                <%= thing.name %>
+                            </h3>
+                            <input type="hidden" class="pricex" value=<%= thing.price %>>
+                            <input type="hidden" class="qtyx" value=<%=thing.qty %>>
+                            <h4 class="product-price">₹ <%= thing.price %>
+                            </h4>
+                            <h4 class="product-offer">
+                                <%= thing.desc %>
+                            </h4>
+                            <p class="product-quantity">Qnt: <input value=<%=thing.qty %>>
+                            <form action="/cart/<%= thing._id %>" method="POST">
+
+                                <p class="product-remove">
+                                    <button type="submit" style="cursor: pointer;all: unset;">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                        <span class="remove">Remove</span>
+                                    </button>
+                                </p>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <% }) %>
+            </div>
+
+            <div class="cart-total">
+                <p>
+                    <span>Total Price</span>
+                    <span id="price"> </span>
+                </p>
+                <p>
+                    <span>Number of Items</span>
+                    <span id="qty"></span>
+                </p>
+                <p>
+                    <span>You Save</span>
+                    <span id="yousave">₹ 1,000</span>
+                </p>
+                <form onsubmit="return setAction(this)" method="post" id="form">
+                <p>
+                    <span>Total</span>
+                    <span id="total"></span>
+                    <input type="hidden" name="price" id="totalprice" value="">
+                </p>
+                <button type="submit" class="signupbtn" style="all: unset;margin-left: 80px;cursor: pointer;background-color: tomato;border-radius: 10px;padding: 3px;"><a>Proceed to Checkout</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var x = document.getElementById("price");
+        var y = document.getElementById("qty");
+        var a = document.getElementsByClassName("pricex");
+        var b = document.getElementsByClassName("qtyx");
+        var c = document.getElementById("total");
+        var d = document.getElementById("totalprice");
+        var e = document.getElementById("form");
+        var f = document.getElementById("yousave");
+
+        price=0
+        qty=0
+        for(i=0; i<a.length; i++)
+        {
+            price += (parseInt(a[i].value)*parseInt(b[i].value));
+            qty += parseInt(b[i].value);
+        }
+        //console.log(price);
+        
+        x.innerHTML = "₹ "+price;
+        y.innerHTML = qty;
+        c.innerHTML = "₹ "+(price-(price*0.25));
+        f.innerHTML = "₹ "+(price*0.25);
+        d.value = (price-(price*0.25));
+        function setAction(form) {
+            form.action = `/checkout/${d.value}`;
+            //alert(form.action);
+            return form.action;
+        }
+    </script>
+
+</body>
+
+</html>

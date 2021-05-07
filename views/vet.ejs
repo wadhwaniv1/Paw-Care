@@ -16,14 +16,14 @@
     <div class="div1">
         <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
         <div class="toggle-section">
-            <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
+            <div onclick="location.href='/dashb';" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
             <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
-            <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+            <div onclick="location.href='/cart';" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
         </div>
         <div class="toggle-section">
-            <div>Hello User,<i class="fa fa-user"></i></div>
+            <div>Hello <%= user %>,<i class="fa fa-user"></i></div>
             <div>l</div>
-            <div onclick="" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+            <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
         </div>
     </div>
     <div style="display: flex;justify-content: center;margin: 40px;">

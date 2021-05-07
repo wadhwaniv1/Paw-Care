@@ -18,12 +18,13 @@
             <div class="toggle-section">
                 <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
                 <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
-                <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+                <div onclick="location.href='/cart';" style="cursor:pointer;" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
             </div>
             <div class="toggle-section">
                 <div>Hello <%= uname %>,<i class="fa fa-user"></i></div>
                 <div>l</div>
-                <div onclick="" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+                <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out
+                </div>
             </div>
         </div>
         <div class="div2">
@@ -36,22 +37,40 @@
         <div class="div3">
             <div class="div31">Exclusive Pet Care.</div>
             <div class="div32"><img src="../images/pv.png" alt=""></div>
-            <div class="div33"><button onclick="location.href='../html/petcare.html';" class="button button2">Click
+            <div class="div33"><button onclick="location.href='/petcare';" class="button button2">Click
                     here</button></div>
         </div>
-        <div id="main-1">
-        <% docs.forEach(function(thing){ %>
-            <div class="div4">
-                <div class="div41"><img src="../images/torainu.png" alt=""></div>
-                <div class="div42"><%= thing.name %></div>
-                <div class="div43">
-                    <div class="cart"><i class="fa fa-shopping-cart"
-                            style="font-size:35px;color:red;background: #FFFDFD;"></i></div>
-                </div>
-                <div class="div44"><%= thing.desc %></div>
-                <div class="div45">₹<%= thing.price %></div>
-            </div>
-            <% }) %>    
+        <div>
+            <% docs.forEach(function(thing){ %>
+                <form action="/order" method="POST">
+                    <div class="div4">
+                        <div class="div41"><img src="../images/torainu.png" alt=""></div>
+                        <input type="hidden" name="name" value="<%= thing.name %>">
+                        <div class="div42">
+                            <%= thing.name %>
+                        </div>
+                        <div class="div43">
+
+                            <div class="cart">
+                                <button type="submit" style="all: unset;cursor: pointer;">
+                                    <i class="fa fa-shopping-cart"
+                                        style="font-size:35px;color:red;background: #FFFDFD;"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="div44">
+                            <input type="hidden" name="desc" value=<%=thing.desc %>>
+                            <%= thing.desc %>
+                        </div>
+                        <div class="div45">
+                            <input type="hidden" name="price" value=<%=thing.price %>>
+                            ₹<%= thing.price %>
+                        </div>
+                    </div>
+                </form>
+                <% }) %>
+        </div>
     </main>
 </body>
 

@@ -15,14 +15,14 @@
     <div class="div1">
         <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
         <div class="toggle-section">
-            <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
+            <div onclick="location.href='/dashb';" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
             <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
-            <div onclick="" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+            <div onclick="location.href='/cart';" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
         </div>
         <div class="toggle-section">
-            <div>Hello User,<i class="fa fa-user"></i></div>
+            <div>Hello <%= user %>,<i class="fa fa-user"></i></div>
             <div>l</div>
-            <div onclick="" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+            <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
         </div>
     </div>
     <div style="display: flex;justify-content: center;margin: 40px;">
@@ -33,8 +33,7 @@
 Identification.
 <span style="font-size: 3vh;font-family: Verdana, Geneva, Tahoma, sans-serif;background: #FDC1FE;">Check your pet health.</span></pre>
             </div>
-            <div style="display: flex;justify-content: center;align-items: center;"><button class="button button2">Click
-                    here</button></div>
+            
         </div>
     </div>
 
@@ -44,15 +43,21 @@ Identification.
             PET CARE.
         </div>
         <div id="wrapper">
-            <h1 style="background: rgb(252, 212, 248);">What kind of computer scientist are you?</h1>
+            <iframe src="https://symptom-webdvm.lifelearn.com/?style=lifelearn"
+                style="margin-top: 250px;position: static;" frameborder="0" width="100%" height="800px"></iframe>
+            <div style="width: 100%;height: 60px;background: #FFE1E8;position: relative;top: -403px;"></div>
+            <div
+                style="width: 100%;height: 60px;background: #FFE1E8;position: relative;top: -350px;text-align: center;font-family: Righteous;font-size: 25px;">
+                Check symptoms and get recommendation.</div>
+            <!--<h1 style="background: rgb(252, 212, 248);">What kind of computer scientist are you?</h1>
             <p style="background: rgb(252, 212, 248);">Take this questionnaire to find out!</p>
 
-            <form id="quiz" style="background: rgb(252, 212, 248);">
-                <!-- Question 1 -->
-                <h2>What gets you the most excited?</h2>
-                <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
-                <!-- The value is which answer the choice corresponds to. -->
-                <label><input type="radio" name="q1" value="c1">
+            <form id="quiz" style="background: rgb(252, 212, 248);">-->
+            <!-- Question 1 -->
+            <!--<h2>What gets you the most excited?</h2>-->
+            <!-- Here are the choices for the first question. Each input tag must have the same name. For this question, the name is q1. -->
+            <!-- The value is which answer the choice corresponds to. -->
+            <!--<label><input type="radio" name="q1" value="c1">
                     Experimenting, discovering, and learning
                 </label><br />
                 <label><input type="radio" name="q1" value="c2">
@@ -63,12 +68,12 @@ Identification.
                 </label><br />
                 <label><input type="radio" name="q1" value="c4">
                     Taking risks
-                </label><br />
+                </label><br />-->
 
-                <!-- Question 2 -->
-                <h2>What is your ideal work environment?</h2>
-                <!-- Here are the choices for the second question. Notice how each input tag has the same name (q2), but a different name than the previous question. -->
-                <label><input type="radio" name="q2" value="c1">
+            <!-- Question 2 
+                <h2>What is your ideal work environment?</h2>-->
+            <!-- Here are the choices for the second question. Notice how each input tag has the same name (q2), but a different name than the previous question. -->
+            <!-- <label><input type="radio" name="q2" value="c1">
                     Inside a high tech lab with lots of fancy equipment
                 </label><br />
                 <label><input type="radio" name="q2" value="c2">
@@ -79,11 +84,11 @@ Identification.
                 </label><br />
                 <label><input type="radio" name="q2" value="c4">
                     Inside a cozy room or garage at home
-                </label><br />
+                </label><br />-->
 
-                <!-- Question 3 -->
-                <h2>Who are your role models?</h2>
-                <!-- Choices for the third question -->
+            <!-- Question 3 
+                <h2>Who are your role models?</h2>-->
+            <!-- Choices for the third question 
                 <label><input type="radio" name="q3" value="c1">
                     People who make great discoveries
                 </label><br />
@@ -95,12 +100,12 @@ Identification.
                 </label><br />
                 <label><input type="radio" name="q3" value="c4">
                     People who build innovative products
-                </label><br />
+                </label><br />-->
 
-                <!-- Question 4 -->
-                <h2>What do you do when you encounter a difficult problem?</h2>
-                <!-- Choices for the fourth question -->
-                <label><input type="radio" name="q4" value="c1">
+            <!-- Question 4 
+                <h2>What do you do when you encounter a difficult problem?</h2>-->
+            <!-- Choices for the fourth question -->
+            <!--<label><input type="radio" name="q4" value="c1">
                     Try to find the solution yourself (online, in a book, etc.)
                 </label><br />
                 <label><input type="radio" name="q4" value="c2">
@@ -118,7 +123,7 @@ Identification.
             </form>
 
 
-            <div id="answer">Your result will show up here!</div>
+            <div id="answer">Your result will show up here!</div>-->
         </div>
     </div>
 
