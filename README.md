@@ -40,3 +40,13 @@ UI created on Figma
 
 Link: 
 https://www.figma.com/proto/6tgtGGpvsS4jUO7JyBaEXQ/Untitled?node-id=18%3A3&scaling=scale-down&page-id=0%3A1
+
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture1.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture2.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture3.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture4.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture5.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture6.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture7.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture8.PNG)
+![](https://github.com/wadhwaniv1/Project---Paw-Care/blob/master/uploads/Capture9.PNG)
