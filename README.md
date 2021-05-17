@@ -1,6 +1,13 @@
 # Paw-Care
 
-Project developed for animal/pet lovers. Features like rescue animal and pet care amenities make it a unique one.
+## Project developed for animal/pet lovers. Features like rescue animal and pet care amenities make it a unique one.
+![1](https://user-images.githubusercontent.com/62770603/118540214-ff735980-b76d-11eb-90f7-0e925bdc7176.png)
+![2](https://user-images.githubusercontent.com/62770603/118540324-1d40be80-b76e-11eb-9fee-c99736e4e65b.png)
+![3](https://user-images.githubusercontent.com/62770603/118540337-1fa31880-b76e-11eb-9f78-03c91e5be822.png)
+![4](https://user-images.githubusercontent.com/62770603/118540343-216cdc00-b76e-11eb-918f-beeed1c7d68b.png)
+![5](https://user-images.githubusercontent.com/62770603/118540350-229e0900-b76e-11eb-8615-4e3e9becd870.png)
+![6](https://user-images.githubusercontent.com/62770603/118540357-2467cc80-b76e-11eb-8c7b-59bcd83a0dec.png)
+![7](https://user-images.githubusercontent.com/62770603/118540364-26319000-b76e-11eb-8dcc-708a7448063f.png)
 
 ---
 ## Requirements
