@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
 </head>
 
@@ -30,23 +31,6 @@
                     <a href="/">Discover</a>
                 </div>
             </div>
-            <!--<div class="form">
-                <div class="formhead">
-                    <div>LOGIN</div>
-                    <div>
-                        <img src="../images/LOGIN.png" alt="">
-                    </div>
-                </div>
-                <div class="fields"><input type="text" name="sname" id="sname" placeholder="USERNAME"></div>
-                <div class="fields"><input type="text" name="sname" id="sname" placeholder="PASSWORD"></div>
-                <div class="forgot">
-                    <div>Forgot Password?</div>
-                    <div onclick="location.href='signup.html';" style="cursor: pointer;">SignUp</div>
-                </div>
-                <div class="ssubmit">
-                    <div class="submit" onclick="location.href='../dashb';" style="background: #FFB4B4;"><input type="button" value="Login" style="cursor: pointer;"></div>
-                </div>
-            </div>-->
             <div class="signup">
                 <form action="/login" method="POST">
                     <div class="formhead">
@@ -68,13 +52,24 @@
                         <div>Forgot password?</div>
                         <div onclick="location.href='../signup';" style="cursor: pointer;">Sign-up</div>
                     </div>
-                    <div class="submit" style="background: #FFB4B4;"><button type="submit" class="signupbtn">Login
-                    </div>
+                    <%if(message){%>
+                        <p style="background: #FFB4B4;height: 4vh;text-align: center;">
+                            <%= message %>
+                        </p>
+                    <%}%>
+                            <div class="submit" style="background: #FFB4B4;"><button type="submit"
+                                    class="signupbtn">Login
+                            </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <script type="text/javascript">
+        function alert(t) {
+            alert(t);
+        }
+    </script>
 </body>
 
 </html>

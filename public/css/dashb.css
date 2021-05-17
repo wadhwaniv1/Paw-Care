@@ -1,13 +1,84 @@
 *{
     margin: 0;
     padding: 0;
+    
+}
+body{
     background: #FFE1E8;
 }
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 25px;
+}
+  
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #B223AD;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+footer{
+    display: grid;
+    margin-top: 100px;
+    grid-template-rows: 150px 150px 50px 50px;
+    grid-template-columns: repeat(3,1fr);
+}
+footer > div{
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.divf6{
+    grid-column: 2/4;
+}
+.divf7{
+    grid-column: 1/-1;
+    background: #202020;
+}
+.divf8{
+    grid-column: 1/-1;
+    background: #202020;
+}
+.subscribe-form {
+    position: relative;
+    overflow: hidden;
+  }
+  .subscribe-form input {
+    width: 100%;
+    padding: 14px 28px;
+    background: #2E2E2E;
+    border: 1px solid #2E2E2E;
+    color: #fff;
+  }
+  .subscribe-form button {
+      position: absolute;
+      right: 0;
+      background: #f153f7;
+      padding: 13px 20px;
+      top: 0;
+  }
+  .subscribe-form button i {
+    color: #fff;
+    font-size: 22px;
+    transform: rotate(-6deg);
+  }
 main{
     width: 95%;
+    
     margin: 15px auto;
     display: grid;
-    grid-template-rows: 100px 300px 250px 250px;
+    grid-template-rows: 100px 300px 250px 250px 250px 250px 250px;
     /*grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));*/
     grid-template-columns:  1fr 0.25fr;
     /*grid-row-gap: 20px;
@@ -18,7 +89,6 @@ main{
     justify-items: center;*/
 }
 .div1{
-    background: red;
     grid-column: 1/-1;
     display: grid;
     grid-template-columns: 0.5fr repeat(2,1fr);
@@ -47,7 +117,7 @@ main{
     background: #FFBFBF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    grid-column: 1/2;
+    grid-column: 1/-1;
     display: grid;
     grid-template-rows: repeat(2,1fr);
     grid-template-columns: repeat(3,1fr);
@@ -200,4 +270,3 @@ i{
   .button2:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
   }  
-

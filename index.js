@@ -6,12 +6,16 @@ const Order = require("./models/order");
 const CustomerData = require("./models/signup");
 const StrangerData = require("./models/stranger");
 const productRouter = require('./routers/route');
-const checkout = require('./models/checkout');
 const cookieParser = require("cookie-parser");
 const auth = require("./middleware/auth")
 const nodemailer = require("nodemailer");
+//const popupS = require('popups');
 const bcrypt = require("bcryptjs");
 const path = require("path");
+const multer  = require('multer');
+const crypto = require('crypto')
+const Checkout = require('./models/checkout');
+//const upload = multer({ dest: 'uploads/stranger/' });
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -32,7 +36,6 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 
 var cors = require('cors');
-const Checkout = require('./models/checkout');
 app.use(cors());
 
 app.use("/generatepdf", require("./routers/generatePdf"));
@@ -45,11 +48,27 @@ app.get("/signup", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-    res.render("login");
+    res.render("login",{
+        message: null
+    });
 })
 
 app.get("/stranger", (req, res) => {
     res.render("stranger");
+})
+
+app.get("/admin_login", (req, res) => {
+    res.render("admin_login");
+})
+
+app.post("/admin_login", (req, res) => {
+    email = req.body.email;
+    pass = req.body.psw;
+
+    if(email==="qwerty" && pass==="qwerty")
+    res.redirect("products");
+    else
+    console.log("Invalid credentials!");
 })
 
 app.get("/admin_order", async (req, res) => {
@@ -77,6 +96,7 @@ app.post("/checkout", auth, async (req, res) => {
     try {
 
         const orderData = await Order.find({ id: req.user._id });
+        //console.log(orderData);
         const checkout = new Checkout({
             id: req.user._id,
             fullname: req.body.fullname,
@@ -86,6 +106,7 @@ app.post("/checkout", auth, async (req, res) => {
             price: req.body.price,
             Order: orderData
         })
+        console.log(checkout);
         //console.log(orderData);
         const ordered = await checkout.save();
         //console.log(ordered);
@@ -123,13 +144,56 @@ app.post("/signup", async (req, res) => {
     }
 })
 
-app.post("/stranger", async (req, res) => {
+app.post("/delete-stray/:id", async(req, res) =>{
+    try{
+        const id = req.params.id;
+        const delProduct = await StrangerData.findByIdAndDelete(id);
+        if(!id){
+            return res.status(400).send();
+        }
+        res.redirect("../straypet");
+    }catch(err){
+        res.status(400).send(err);
+    }
+})
+
+app.post("/delete-order/:id", async(req, res) =>{
+    try{
+        const id = req.params.id;
+        const delProduct = await Checkout.findByIdAndDelete(id);
+        if(!id){
+            return res.status(400).send();
+        }
+        res.redirect("../admin_order");
+    }catch(err){
+        res.status(400).send(err);
+    }
+})
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/uploads')
+    },
+    filename: function (req, file, cb) {
+        crypto.pseudoRandomBytes(16, function (err, raw) {
+            if (err) return cb(err)
+      
+            cb(null, raw.toString('hex') + path.extname(file.originalname))
+          })
+    }
+  })
+   
+var upload = multer({ storage: storage })
+
+app.post("/stranger", upload.single('myfile'), async (req, res) => {
     try {
+        
         const stranger = new StrangerData({
             email: req.body.email,
             name: req.body.name,
             latitude: req.body.latitude,
-            longitude: req.body.longitude
+            longitude: req.body.longitude,
+            img: req.file.filename
         })
 
         const registered = await stranger.save();
@@ -159,7 +223,7 @@ app.post("/stranger", async (req, res) => {
         res.status(201).redirect("stranger");
     } catch (err) {
         //alert("Enter correct credentials.");
-        res.status(400).send(err);
+        res.status(400).render("404");
     }
 })
 
@@ -175,17 +239,17 @@ app.post("/order", auth, async (req, res) => {
                 break;
             }
         }
+        console.log(temp);
         if (temp) {
-            p = orderData[t].qty + 1;
-            //console.log(req.body.name === orderData[t].name);
-            try {
-                let doc = await Order.findOneAndUpdate({ name: req.body.name }, { qty: p }, {
-                    new: true
-                });
-                //console.log(doc);
-            } catch (error) {
-                res.status(400).send("Not found");
-            }
+            //console.log(t);
+            p = orderData[t].qty;
+            p+=1;
+            console.log(p);
+            if(req.body.name == "German Shepherd") console.log("ok");
+            Order.updateOne({ "name" : req.body.name, "id": req.user._id }, {$set: { "qty": p }}, (err,result) => {
+                    if(err) console.log(err);
+                    else console.log(result);
+            });
         } else {
             const order = new Order({
                 id: req.user._id,
@@ -209,7 +273,12 @@ app.get("/petcare", auth, (req, res) => {
         user: req.user.username
     });
 })
-
+app.get("/about", auth, (req, res) => {
+    //console.log(auth);
+    res.render("about", {
+        user: req.user.username
+    });
+})
 app.get("/disease", auth, (req, res) => {
     //console.log(auth);
     res.render("disease", {
@@ -291,7 +360,11 @@ app.post("/login", async (req, res) => {
             res.redirect("/dashb");
         }
         else {
-            res.send("Invalid credentialss");
+            //res.send("Invalid credentialss");
+            //res.json({message: "Invalid credetianls"});
+            res.render("login", {
+                message: "Invalid credentials, try again"
+            })
         }
     } catch (err) {
         res.status(400).send("Invalid credentials");

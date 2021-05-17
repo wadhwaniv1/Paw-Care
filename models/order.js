@@ -15,7 +15,7 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     desc : String,
-    qty: Number
+    qty : Number
 })
 
 const Order = new mongoose.model("Order",orderSchema);

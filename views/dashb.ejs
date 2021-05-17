@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/dashb.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>PawCare</title>
 </head>
 
@@ -17,8 +19,9 @@
             <div class="head">Paw<span style="color:#B223AD">Care</span>.</div>
             <div class="toggle-section">
                 <div onclick="" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
-                <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
-                <div onclick="location.href='/cart';" style="cursor:pointer;" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+                <div onclick="location.href='/about';" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
+                <div onclick="location.href='/cart';" style="cursor:pointer;" style="cursor:pointer;"><i
+                        class="fa fa-shopping-cart"></i>Cart</div>
             </div>
             <div class="toggle-section">
                 <div>Hello <%= uname %>,<i class="fa fa-user"></i></div>
@@ -40,7 +43,7 @@
             <div class="div33"><button onclick="location.href='/petcare';" class="button button2">Click
                     here</button></div>
         </div>
-        <div>
+        <div class="div4t">
             <% docs.forEach(function(thing){ %>
                 <form action="/order" method="POST">
                     <div class="div4">
@@ -60,7 +63,7 @@
 
                         </div>
                         <div class="div44">
-                            <input type="hidden" name="desc" value=<%=thing.desc %>>
+                            <input type="hidden" name="desc" value="<%=thing.desc %>">
                             <%= thing.desc %>
                         </div>
                         <div class="div45">
@@ -72,6 +75,56 @@
                 <% }) %>
         </div>
     </main>
+
+    <footer>
+        <div class="divf1">
+            <pre style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size: 3vh;">
+                
+                <h4><i class="fa fa-map-marker" aria-hidden="true" style="font-size: 5vh;"></i>Find us</h4>
+<span>VIT Vellore,Tamil Nadu</span>
+            </pre>
+        </div>
+        <div class="divf2">
+            <pre style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size: 3vh;">
+                
+                <h4><i class="fa fa-phone" aria-hidden="true" style="font-size: 5vh;"></i>Call us</h4>
+<span>7483639730</span>
+            </pre>
+        </div>
+        <div class="divf3">
+            <pre style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size: 3vh;">
+                
+                <h4><i class="fa fa-envelope" aria-hidden="true" style="font-size: 5vh;"></i>Mail us</h4>
+<span>pawcareinc@gmail.com</span>
+            </pre>
+        </div>
+        <div class="divf4">
+            <pre style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size: 3vh;">
+                
+                <h4>Follow us</h4>
+<span><i class="fa fa-facebook-square" aria-hidden="true"></i>  <i class="fa fa-twitter" aria-hidden="true"></i>  <i class="fa fa-google-plus" aria-hidden="true"></i></span>
+            </pre>
+        </div>
+        </div>
+        <div class="divf6">
+            <h2>Subscribe us</h2>
+            <div class="subscribe-form">
+                <form action="#">
+                    <input type="text" placeholder="Email Address">
+                    <button><i class="fa fa-telegram" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="divf7">
+            <p>Copyright &copy; 2021, All Right Reserved</p>
+        </div>
+        <div class="divf8">
+            <p>Made with ❤️</p>
+        </div>
+    </footer>
+    <script src="https://widget.flowxo.com/embed.js"
+        data-fxo-widget="eyJ0aGVtZSI6IiM1N2EzZWIiLCJ3ZWIiOnsiYm90SWQiOiI2MDk4MzQ1N2QxYjlhMjAwMWM3YzVmODIiLCJ0aGVtZSI6IiM1N2EzZWIiLCJsYWJlbCI6IlBhd0NhcmUgSW5jIn0sIndlbGNvbWVUZXh0Ijoi8J+QlSIsInBvcHVwSGVpZ2h0IjoiNjAlIn0="
+        async defer></script>
 </body>
 
 </html>

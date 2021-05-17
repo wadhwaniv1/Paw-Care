@@ -17,7 +17,7 @@ function showPosition(position) {
     async function getapi(url) {
 
         const headers = {
-            'Authorization': 'bearer b1a9e4fa-c63a-4ba9-9845-e7f20cf8cb10'
+            'Authorization': 'bearer d0defe4b-a6f1-46f5-a906-fca7f4e89a3b'
         };
         try {
             // Storing response
@@ -31,7 +31,7 @@ function showPosition(position) {
                 `<tr>
               <th>Place Name</th>
               <th>Address</th>
-              <th>Distance(in km)</th>
+              <th>Distance(in m)</th>
              </tr>`;
 
             const temp =  data.suggestedLocations;

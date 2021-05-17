@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/order.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>StrayPets</title>
 </head>
+
 <body>
     <main>
         <div class="div1"><img src="../images/admin.png" alt=""></div>
-        <div class="div2" onclick="location.href='/admin_order';" style="cursor:pointer;"><i class="fa fa-bars"></i>Orders</div>
+        <div class="div2" onclick="location.href='/admin_order';" style="cursor:pointer;color: gray;"><i
+                class="fa fa-bars"></i>Orders</div>
         <div class="div3"><i class="fa fa-paw" aria-hidden="true"></i>StrayPets</div>
-        <div class="div4" onclick="location.href='/products';" style="cursor:pointer;"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Products</div>
-        <div class="div5"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</div>
+        <div class="div4" onclick="location.href='/products';" style="cursor:pointer;color: gray;"><i
+                class="fa fa-shopping-basket" aria-hidden="true"></i>Products</div>
+        <div class="div5" onclick="location.href='/admin_login';" style="cursor:pointer;"><i class="fa fa-sign-out"
+                aria-hidden="true"></i>LogOut</div>
     </main>
     <header>
         <div style="background: black;">
@@ -27,43 +33,143 @@
             <div>Longitude</div>
         </div>
         <% docs.forEach(function(thing){ %>
-        <div class="content">
-            <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
-            <div><%= thing.name %></div>
-            <div><%= thing.email %></div>
-            <div>X</div>
-            <div><%= thing.latitude %></div>
-            <div><%= thing.longitude %></div>
-        </div>
-        <% }) %> 
-        <div class="content">
-            <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
-            <div>Vishal</div>
-            <div>abc@gmail.com</div>
-            <div>X</div>
-            <div>193.22.777.2</div>
-            <div>003.29.7977.29</div>
-        </div>
-        <div class="content">
-            <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
-            <div>Vishal</div>
-            <div>abc@gmail.com</div>
-            <div>X</div>
-            <div>193.22.777.2</div>
-            <div>003.29.7977.29</div>
-        </div>
-        <div class="content">
-            <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
-            <div>Vishal</div>
-            <div>abc@gmail.com</div>
-            <div>X</div>
-            <div>193.22.777.2</div>
-            <div>003.29.7977.29</div>
-        </div>
+            <div class="content">
+                <div>
+                    <form action="/delete-stray/<%= thing._id %>" method="post">
+                        <button type="submit" style="all: unset;cursor: pointer;">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+                <div>
+                    <%= thing.name %>
+                </div>
+                <div>
+                    <%= thing.email %>
+                </div>
+                <div><button id="myB" style="padding: 5px;cursor: pointer;" value="<%= thing.img %>"
+                        onclick=display(event.target.value)>View</button>
+                </div>
+                <div>
+                    <%= thing.latitude %>
+                </div>
+                <div>
+                    <%= thing.longitude %>
+                </div>
+            </div>
+            <div><button id="myBtn" style="all:unset; padding: 5px;cursor: pointer;" value="<%= thing.latitude %>"
+                    data-value="<%= thing.longitude %>"
+                    onclick=mapdisplay(event.target.value,event.target.data-value)><i class="fa fa-map-marker"
+                        aria-hidden="true"></i>Locate</button>
+            </div>
+            </div>
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" style="background-color: white;">&times;</span>
+                    <img id="image" alt="NA" style="max-width: 100%;max-height: 100%;object-fit: cover;">
+                </div>
+
+            </div>
+            <% }) %>
+
+                <iframe id="map"
+                    src="https://maps.google.com/maps?q=26.2537216,73.03004159999999&hl=es;z=14&amp;output=embed"
+                    style="height: 500px;width: 500px;margin-left: 400px;display: none;"></iframe>
+
+                <!--<div class="content">
+                    <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
+                    <div>Vishal</div>
+                    <div>abc@gmail.com</div>
+                    <div>X</div>
+                    <div>193.22.777.2</div>
+                    <div>003.29.7977.29</div>
+                </div>
+                <div class="content">
+                    <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
+                    <div>Vishal</div>
+                    <div>abc@gmail.com</div>
+                    <div>X</div>
+                    <div>193.22.777.2</div>
+                    <div>003.29.7977.29</div>
+                </div>
+                <div class="content">
+                    <div><i class="fa fa-search" aria-hidden="true"></i>View</div>
+                    <div>Vishal</div>
+                    <div>abc@gmail.com</div>
+                    <div>X</div>
+                    <div>193.22.777.2</div>
+                    <div>003.29.7977.29</div>
+                </div>-->
     </header>
 
     <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        var img = document.getElementById("image");
+        var map = document.getElementById("map");
+        // Get the button that opens the modal
+        /*var btn = document.getElementById("myBtn");
         
+        btn.onclick = () => {
+            if (map.style.display === "none") {
+                map.style.display = "block";
+            } else {
+                map.style.display = "none";
+            }
+        }*/
+        const mapdisplay = (latitude, longitude) => {
+            console.log(latitude);
+            //map.setAttribute("src", `https://maps.google.com/maps?q=26.2537216,73.03004159999999&hl=es;z=14&amp;output=embed`);
+            if (map.style.display === "none") {
+                map.style.display = "block";
+            } else {
+                map.style.display = "none";
+            }
+        }
+        //console.log(btn);
+        //for (i = 0; i < btn.length; i++) {
+        //console.log(btn[i].value+" ");
+        // When the user clicks the button, open the modal
+        const display = (pic) => {
+            console.log(pic);
+            modal.style.display = "block";
+            img.setAttribute("src", `../uploads/${pic}`)
+            console.log(img.src + "  hey");
+        }
+        /*btn[0].onclick = function () {
+            modal.style.display = "block";
+            img.setAttribute("src", `../uploads/${btn[0].value}`)
+            console.log(img.src + "  hey");
+        }
+        btn[1].onclick = function () {
+            modal.style.display = "block";
+            img.setAttribute("src", `../uploads/${btn[1].value}`)
+            console.log(img.src + "  hey");
+        }
+        btn[2].onclick = function () {
+            modal.style.display = "block";
+            img.setAttribute("src", `../uploads/${btn[2].value}`)
+            console.log(img.src + "  hey");
+        }*/
+        //}
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
+
 </html>

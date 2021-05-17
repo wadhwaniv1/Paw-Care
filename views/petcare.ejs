@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/petcare.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>PetCare</title>
@@ -18,12 +19,14 @@
             <div class="toggle-section">
                 <div onclick="location.href='/dashb';" style="cursor:pointer;"><i class="fa fa-home"></i>Home</div>
                 <div onclick="" style="cursor:pointer;"><i class="fa fa-search"></i>AboutUs</div>
-                <div onclick="location.href='/cart';" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart</div>
+                <div onclick="location.href='/cart';" style="cursor:pointer;"><i class="fa fa-shopping-cart"></i>Cart
+                </div>
             </div>
             <div class="toggle-section">
                 <div>Hello <%= user %>,<i class="fa fa-user"></i></div>
                 <div>l</div>
-                <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out</div>
+                <div onclick="location.href='/logout';" style="cursor:pointer;"><i class="fa fa-sign-out"></i>Log Out
+                </div>
             </div>
         </div>
         <div class="div2">
@@ -33,9 +36,12 @@
 Identification.
 <span style="font-size: 3vh;font-family: Verdana, Geneva, Tahoma, sans-serif;background: #FDC1FE;">Check your pet health.</span></pre>
             </div>
-            <div style="display: flex;justify-content: center;align-items: center;"><button onclick="location.href='/disease';" style="cursor: pointer;"class="button button2">Click here</button></div>
+            <div style="display: flex;justify-content: center;align-items: center;"><button
+                    onclick="location.href='/disease';" style="cursor: pointer;" class="button button2">Click
+                    here</button></div>
         </div>
-        <div class="div3" style="writing-mode: vertical-rl;font-family: Righteous;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+        <div class="div3"
+            style="writing-mode: vertical-rl;font-family: Righteous;text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
             PET CARE.
         </div>
         <div class="div4">
@@ -45,9 +51,15 @@ Identification.
 nearby vets.
 <span style="font-size: 3vh;font-family: Verdana, Geneva, Tahoma, sans-serif;background: #FDC1FE;">Monthly health checkup.</span></pre>
             </div>
-            <div style="display: flex;justify-content: center;align-items: center;"><button onclick="location.href='/vet';" class="button button2">Click here</button></div>
+            <div style="display: flex;justify-content: center;align-items: center;"><button
+                    onclick="location.href='/vet';" class="button button2">Click here</button></div>
         </div>
     </main>
+    
+    <div style="display: flex;align-items: center;justify-content: center;margin-top: 80px;">
+        <iframe src="https://www.gameflare.com/embed/my-pet-clinic/" frameborder="0" scrolling="no" width="960"
+            height="575" allowfullscreen style="width: 100%;padding: 30px;"></iframe>
+    </div>
 </body>
 
 </html>

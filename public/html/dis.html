@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../css/dis.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet"
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease cure</title>
+
+</head>
+
+<body>
+    <h1>Self Diagnosis Guide</h1>
+
+    <h2>Below is a list of symptoms. Please select yours.</h2>
+
+    <div class="container">
+        <form id="symptoms">
+            <h4>Head</h4>
+            <label for="headache1">Mild Headache</label>
+            <input id="headache1" type="checkbox" name="symptom" value="headache1"></input>
+            <label for="headache2">Moderate Headache</label>
+            <input id="headache2" type="checkbox" name="symptom" value="headache2"></input>
+            <label for="headache3">Severe Headache</label>
+            <input id="headache3" type="checkbox" name="symptom" value="headache3"></input><br>
+            <label for="runny-nose">Runny Nose</label>
+            <input id="runny-nose" type="checkbox" name="symptom" value="runnyNose"></input>
+            <label for="congestion">Congestion</label>
+            <input id="congestion" type="checkbox" name="symptom" value="congestion"></input>
+            <label for="cough">Coughing</label>
+            <input id="cough" type="checkbox" name="symptom" value="cough"></input><br>
+            <label for="sore-throat">Sore Throat</label>
+            <input id="soreThroat" type="checkbox" name="symptom" value="soreThroat"></input>
+            <label for="sneeze">Sneezing</label>
+            <input id="sneeze" type="checkbox" name="symptom" value="sneeze"></input>
+            <label for="nausea">Nausea</label>
+            <input id="nausea" type="checkbox" name="symptom" value="nausea"></input>
+            <br>
+            <span class="none"><label for="None1">None of These</label>
+                <input id="None1" type="checkbox" value="None1"></input></span>
+
+            <h4>Body</h4>
+
+            <label for="fatigue">Fatigue</label>
+            <input id="fatigue" type="checkbox" name="symptom" value="fatigue"></input>
+            <label for="body-aches">Body Aches</label>
+            <input id="body-aches" type="checkbox" name="symptom" value="body-aches"></input>
+            <label for="fever">Fever</label>
+            <input id="fever" type="checkbox" name="symptom" value="fever"></input>
+            <label for="vomit">Vomiting</label>
+            <input id="vomit" type="checkbox" name="symptom" value="vomit"></input><br>
+            <label for="diarrhea">Diarrhea</label>
+            <input id="diarrhea" type="checkbox" name="symptom" value="diarrhea"></input>
+            <br>
+            <span class="none"><label for="None2">None of These</label>
+                <input id="None2" type="checkbox" name="symptom" value="None2"></input></span>
+
+
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+
+
+
+    <div class="results">
+
+        <div id="data">
+        </div>
+
+        <div id="common-cold">
+            <h2>You Have A Common Cold<h2>
+                    <p>Symptoms of a common cold include:</p>
+                    <ul>
+                        <li>Runny Nose</li>
+                        <li>Congestion</li>
+                        <li>Coughing</li>
+                        <li>Sneezing</li>
+                        <li>Sore Throat</li>
+                    </ul>
+                    <p>You may also experience:</p>
+                    <ul>
+                        <li>mild headache</li>
+                        <li>mild body aches</li>
+                    </ul>
+        </div>
+
+        <div id="flu">
+            <h2>You Have A Flu<h2>
+                    <p>Symptoms of a flu include:</p>
+                    <ul>
+                        <li>Runny Nose</li>
+                        <li>Congestion</li>
+                        <li>Coughing</li>
+                        <li>Sneezing</li>
+                        <li>Sore Throat</li>
+                        <li>Fatigue</li>
+                        <li>Body Aches</li>
+                        <li>Headache</li>
+                        <li>Nausea</li>
+                    </ul>
+                    <p>You may also experience:</p>
+                    <ul>
+                        <li>Vomiting</li>
+                        <li>Diarrhea</li>
+                    </ul>
+        </div>
+
+        <div id="healthy">
+            <p> You are devoid of illnesses! Enjoy your day!</p>
+        </div>
+
+        <div id="um">
+            <p> Please select your symptoms, then click Submit.</p>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("form#symptoms").submit(function (event) {
+                event.preventDefault();
+
+                let headache1;
+                if ($("#headache1").is(":checked")) headache1 = true;
+                let headache2;
+                if ($("#headache2").is(":checked")) headache2 = true;
+                let headache3;
+                if ($("#headache3").is(":checked")) headache3 = true;
+                let runnyNose;
+                if ($("#runnyNose").is(":checked")) runnyNose = true;
+                let congestion;
+                if ($("#congestion").is(":checked")) congestion = true;
+                let cough;
+                if ($("#cough").is(":checked")) cough = true;
+                let soreThroat;
+                if ($("#soreThroat").is(":checked")) soreThroat = true;
+                let sneeze;
+                if ($("#sneeze").is(":checked")) sneeze = true;
+                let nausea;
+                if ($("#nausea").is(":checked")) nausea = true;
+
+                let bodyAches;
+                if ($("#body-aches").is(":checked")) bodyAches = true;
+                let fatigue;
+                if ($("#fatigue").is(":checked")) fatigue = true;
+
+                let noneAbove1;
+                if ($("#None1").is(":checked")) noneAbove1 = true;
+                let noneAbove2;
+                if ($("#None2").is(":checked")) noneAbove2 = true;
+
+                var illness = $("<input>").val();
+                console.log("data is", illness);
+
+
+                if (cough && sneeze && congestion && runnyNose && soreThroat && headache1) {
+                    $("#common-cold").show();
+                } else if (cough && sneeze && congestion && runnyNose && soreThroat) {
+                    $("#common-cold").show();
+                } else if (cough && sneeze && congestion && runnyNose) {
+                    $("#common-cold").show();
+                } else if (cough && sneeze && congestion) {
+                    $("#common-cold").show();
+                } else if (cough && sneeze) {
+                    $("#common-cold").show();
+                } else if (headache1 && congestion) {
+                    $("#common-cold").show();
+                } else if (soreThroat && congestion) {
+                    $("#common-cold").show();
+                } else if (runnyNose && congestion) {
+                    $("#common-cold").show();
+                } else if (sneeze && congestion) {
+                    $("#common-cold").show();
+                } else if (cough && congestion) {
+                    $("#common-cold").show();
+                } else if (cough && soreThroat) {
+                    $("#common-cold").show();
+                } else if (cough && runnyNose) {
+                    $("#common-cold").show();
+                } else if (sneeze && runnyNose && soreThroat) {
+                    $("#common-cold").show();
+
+
+
+
+                    $("#common-cold").show();
+                } else if (runnyNose || cough || sneeze || runnyNose || soreThroat || headache1 && congestion) {
+                    $("#common-cold").show();
+                } else if (runnyNose || cough || sneeze || runnyNose || soreThroat || headache1 && congestion) {
+                    $("#common-cold").show();
+
+                } else if (cough && sneeze && congestion && bodyAches && fatigue && headache2 && fever && diarrhea && nausea) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches && fatigue && headache2 && fever && diarrhea && nausea) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches && fatigue && headache2 && fever && diarrhea) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches && fatigue && headache2 && fever) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches && fatigue && headache2 && fever) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches && fatigue && headache2) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches && fatigue) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches) {
+                    $("#flu").show();
+                } else if (cough || sneeze && congestion && bodyAches && fatigue) {
+                    $("#flu").show();
+                } else if (cough && sneeze && congestion && bodyAches) {
+                    $("#flu").show();
+                } else if (cough || sneeze && congestion && bodyAches && fatigue) {
+                    $("#flu").show();
+                } else if (cough || sneeze && congestion && fatigue) {
+                    $("#flu").show();
+                } else if (cough || sneeze && congestion && fatigue) {
+                    $("#flu").show();
+
+
+                    // } else if (congestion) {
+                    //   $("#common-cold").show();
+
+
+                } else if (noneAbove1) {
+                    $("#healthy").show();
+                } else if (noneAbove2) {
+                    $("#healthy").show();
+                } else {
+                    $("#um").show();
+                }
+
+
+                //  if (illness === "flu") {
+                //    $("#flu").show();
+                //  } else if (illness === cold) {
+                //     $("#common-cold").show();
+                //   } else  if (illness === good) {
+                //     $("#healthy").show();
+
+
+            })
+        });
+    </script>
+</body>
+
+</html>

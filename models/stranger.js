@@ -16,7 +16,18 @@ const strangerSchema = new mongoose.Schema({
     longitude :{
         type: String,
         required: true,
+    },
+    img:
+    {
+        type: String,
+        required: [true, "Uploaded file must have a name"]
     }
+    /*image: {
+        type: Buffer
+    },
+    contentType: {
+        type: String
+    }*/
 })
 
 const StrangerData = new mongoose.model("StrangerData",strangerSchema);

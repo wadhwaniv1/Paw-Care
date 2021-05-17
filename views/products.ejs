@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/product.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Products</title>
@@ -14,11 +15,11 @@
 <body>
     <main>
         <div class="div1"><img src="../images/admin.png" alt=""></div>
-        <div class="div2" onclick="location.href='/admin_order';" style="cursor:pointer;"><i class="fa fa-bars"></i>Orders</div>
-        <div class="div3" onclick="location.href='/straypet';" style="cursor:pointer;"><i class="fa fa-paw"
+        <div class="div2" onclick="location.href='/admin_order';" style="cursor:pointer;color: gray;"><i class="fa fa-bars"></i>Orders</div>
+        <div class="div3" onclick="location.href='/straypet';" style="cursor:pointer;color: gray;"><i class="fa fa-paw"
                 aria-hidden="true"></i>StrayPets</div>
         <div class="div4" onclick="location.href='/products';" style="cursor:pointer;"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Products</div>
-        <div class="div5"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</div>
+        <div class="div5" onclick="location.href='/admin_login';" style="cursor:pointer;"><i class="fa fa-sign-out" aria-hidden="true"></i>LogOut</div>
     </main>
     <header>
         <div class="form-style-3">
@@ -63,7 +64,7 @@
                     </div>
                     <div>₹<%= thing.price %>
                     </div>
-                    <div>
+                    <div style="font-size: 1rem;">
                         <%= thing.desc %>
                     </div>
                     <div>X</div>

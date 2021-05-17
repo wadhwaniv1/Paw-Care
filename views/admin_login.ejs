@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orienta&family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="twohalves">
+        <div class="wc">
+            <div class="welcome">
+                <div class="weltxt">Admin login</div>
+                <div class="weltxt1">
+                    <img src="../images/admin1.png" alt="">
+                </div>
+            </div>
+            <div class="pic">
+                <img src="../images/petfly1.png" alt="">
+            </div>
+        </div>
+        <div class="wc">
+            <div class="nav">
+                <div class="topnav">
+                    <a href="#">Join</a>
+                    <a href="/">Discover</a>
+                </div>
+            </div>
+            <div class="signup">
+                <form action="/admin_login" method="POST">
+                    <div class="formhead">
+                        <div>Admin Login</div>
+                        <div>
+                            <img src="../images/LOGIN.png" alt="">
+                        </div>
+                    </div>
+                    <div class="formbase">
+
+                        <label for="email"></label>
+                        <input type="text" placeholder="Enter Username" name="email" id="uname" required>
+
+                        <label for="psw"></label>
+                        <input type="password" placeholder="Enter Password" name="psw" id="pass" required>
+
+                    </div>
+                    <div class="forgot">
+                        <div>Forgot password?</div>
+                    </div>
+                    <div class="submit" style="background: #FFB4B4;"><button type="submit" class="signupbtn">Login
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
