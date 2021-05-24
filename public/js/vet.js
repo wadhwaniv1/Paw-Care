@@ -17,7 +17,7 @@ function showPosition(position) {
     async function getapi(url) {
 
         const headers = {
-            'Authorization': 'bearer d0defe4b-a6f1-46f5-a906-fca7f4e89a3b'
+            'Authorization': process.env.TOKEN
         };
         try {
             // Storing response
